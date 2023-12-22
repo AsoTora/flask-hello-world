@@ -5,8 +5,7 @@ COPY . .
 COPY requirements.txt requirements.txt
 
 RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
-    && pip install -r requirements.txt \
-    && pip install -e . \
+    && pip install --no-cache-dir -r requirements.txt \
     && apk del .build-deps
 
 ENV FLASK_APP=flask.app
